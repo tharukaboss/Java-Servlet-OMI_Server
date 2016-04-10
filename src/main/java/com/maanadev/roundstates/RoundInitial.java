@@ -4,8 +4,9 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.bidimap.DualHashBidiMap;
+
 import com.maanadev.cards.CARD;
-import com.maanadev.messages.Message;
 import com.maanadev.messages.Response;
 import com.maanadev.player.PLAYER;
 
@@ -17,7 +18,7 @@ public class RoundInitial implements RoundstateOperations {
 	private String nxtPlayerContext;
 	private static final String WAITINGMESSAGE = "Waiting ..... No of players connected: ";
 	private HashMap<String, PLAYER> players = new HashMap<String, PLAYER>();
-	private HashMap<Integer, String> playerNumToUserId = new HashMap<Integer, String>();
+	private DualHashBidiMap playerNumToUserId = new DualHashBidiMap();
 
 	public Response handleSSERequest(HttpServletRequest req, RoundstateOperations context) {
 
@@ -114,8 +115,8 @@ public class RoundInitial implements RoundstateOperations {
 		}
 	}
 
-	public void handlePostRequest(HttpServletRequest req, RoundstateOperations context) {
-
+	public Response handlePostRequest(HttpServletRequest req, RoundstateOperations context) {
+			return null;
 	}
 
 	public void assignFirstHand(CARD[] cards, int position) {
@@ -168,19 +169,14 @@ public class RoundInitial implements RoundstateOperations {
 	}
 
 	public Round nextRound() {
-		Round round = Round.ROUND_1;
-		round.setPlayers(players);
-		round.setPlayerNumToUserId(playerNumToUserId);
-		round.setPlayerContext(getPlayer(nxtPlayerContext));
-		return round;
+		return null;
 	}
 
 	public synchronized void incrementConnectedPlayerCount() {
 		conntctedPlayerCount++;
 	}
 
-	public void setPlayerNumToUserId(HashMap<Integer, String> playerNumToUserId) {
-		// TODO Auto-generated method stub
+	public void setPlayerNumToUserId(DualHashBidiMap playerNumToUserId) {
 
 	}
 
@@ -191,6 +187,13 @@ public class RoundInitial implements RoundstateOperations {
 	public void setmessage(String userId) {
 		getPlayer(userId).setMessage(WAITINGMESSAGE + conntctedPlayerCount);
 
+	}
+
+	public void setUpRound(Round roundContext) {
+		roundContext.setPlayers(players);
+		roundContext.setPlayerNumToUserId(playerNumToUserId);
+		roundContext.setPlayerContext(getPlayer(nxtPlayerContext));
+		
 	}
 
 	

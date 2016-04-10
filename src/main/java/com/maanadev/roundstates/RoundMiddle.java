@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.bidimap.DualHashBidiMap;
+
 import com.maanadev.cards.CARD;
 import com.maanadev.messages.Response;
 import com.maanadev.omiserver.CardHandler;
@@ -15,7 +17,7 @@ public class RoundMiddle implements RoundstateOperations {
 	private CARD trumph;
 	private PLAYER playerContext;
 	private HashMap<String, PLAYER> players;
-	private HashMap<Integer, String> playerNumToUserId;
+	private DualHashBidiMap playerNumToUserId;
 	private static final String PLAYMESSAGE = "play!!!";
 
 	public Response handleSSERequest(HttpServletRequest req, RoundstateOperations context) {
@@ -33,9 +35,9 @@ public class RoundMiddle implements RoundstateOperations {
 
 	}
 
-	public void handlePostRequest(HttpServletRequest req, RoundstateOperations context) {
+	public Response handlePostRequest(HttpServletRequest req, RoundstateOperations context) {
 		// TODO Auto-generated method stub
-
+			return null;
 	}
 
 	public void assignFirstHand(CARD[] cards, int position) {
@@ -101,13 +103,19 @@ public class RoundMiddle implements RoundstateOperations {
 	}
 
 	public PLAYER nextPlayer() {
-		// TODO Auto-generated method stub
-		return null;
+		int playerNum;
+		synchronized (playerNumToUserId) {
+			 playerNum = (Integer) playerNumToUserId.getKey(playerContext.getUserId());
+			 playerNum = (playerNum+2 )%4;
+				
+			 return getPlayer((String)playerNumToUserId.get(playerNum));
+		}
+		
 	}
 
 	public Round nextRound() {
-		// TODO Auto-generated method stub
-return null;
+		///this is implemented in the Enum
+		return null;
 	}
 
 	public void incrementConnectedPlayerCount() {
@@ -115,7 +123,7 @@ return null;
 
 	}
 
-	public void setPlayerNumToUserId(HashMap<Integer, String> playerNumToUserId) {
+	public void setPlayerNumToUserId(DualHashBidiMap playerNumToUserId) {
 		this.playerNumToUserId = playerNumToUserId;
 	}
 
@@ -126,6 +134,12 @@ return null;
 	public int getConnectedPlayerCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public void setUpRound(Round roundContext) {
+		roundContext.setPlayers(players);
+		roundContext.setPlayerNumToUserId(playerNumToUserId);
+		roundContext.setPlayerContext(nextPlayer());
 	}
 
 }

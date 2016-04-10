@@ -18,7 +18,9 @@ public class GameMain {
 	 public Response handleSSERequest(HttpServletRequest req){
 		 System.out.println(roundContext.getConnectedPlayerCount());
 		 if(roundContext.getConnectedPlayerCount()==4) {
+			
 			 roundContext	= roundContext.nextRound();
+			 
 			 System.out.println("round changed");
 		 }
 		 

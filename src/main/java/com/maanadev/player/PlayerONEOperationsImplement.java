@@ -80,21 +80,19 @@ public class PlayerONEOperationsImplement extends PlayerSuper implements PlayerO
 
 	public Response handleSSERequest(HttpServletRequest req, PLAYER playerContex) {
 
-		
-	
-			Response res = new Response();
-			res.setMessage(generateStatusMessage(false));
-			res.setUserId(getUserId());
-			return res;
-		
+		Response res = new Response();
+		res.setMessage(generateStatusMessage(false));
+		res.setUserId(getUserId());
+		return res;
+
 	}
 
 	public Message generateStatusMessage(boolean initial) {
 		Message m = new Message();
 
-		if (card1 != null){
+		if (card1 != null) {
 			m.setCard1(card1.getName());
-			System.out.println(card1.getName()+"jkhhjkhjkh");
+			System.out.println(card1.getName() + "jkhhjkhjkh");
 		}
 
 		if (card2 != null)
@@ -111,6 +109,7 @@ public class PlayerONEOperationsImplement extends PlayerSuper implements PlayerO
 		m.setMessage(message);
 		m.setShowCards(showCards);
 		ArrayList<ImageBind> cardhand = new ArrayList<ImageBind>();
+
 		for (CARD card : hand.values()) {
 			ImageBind im = new ImageBind();
 			im.setImage(card.getName());
