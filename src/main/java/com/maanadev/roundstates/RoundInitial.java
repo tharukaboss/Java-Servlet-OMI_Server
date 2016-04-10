@@ -163,7 +163,7 @@ public class RoundInitial implements RoundstateOperations {
 
 	}
 
-	public PLAYER nextPlayer() {
+	public PLAYER nextPlayerForNxtRound() {
 
 		return null;
 	}
@@ -194,6 +194,11 @@ public class RoundInitial implements RoundstateOperations {
 		roundContext.setPlayerNumToUserId(playerNumToUserId);
 		roundContext.setPlayerContext(getPlayer(nxtPlayerContext));
 		
+	}
+
+	public PLAYER nextPlayer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

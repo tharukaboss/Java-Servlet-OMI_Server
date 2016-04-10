@@ -83,9 +83,9 @@ public enum Round implements RoundstateOperations {
 		operations.generateStatusmessage(userId);
 	}
 
-	public PLAYER nextPlayer() {
+	public PLAYER nextPlayerForNxtRound() {
 		// TODO Auto-generated method stub
-		return operations.nextPlayer();
+		return operations.nextPlayerForNxtRound();
 	}
 
 	public Round nextRound() {
@@ -185,6 +185,11 @@ public enum Round implements RoundstateOperations {
 
 	public void setUpRound(Round roundContext) {
 		operations.setUpRound(roundContext);
+	}
+
+	public PLAYER nextPlayer() {
+		// TODO Auto-generated method stub
+		return operations.nextPlayer();
 	}
 
 }

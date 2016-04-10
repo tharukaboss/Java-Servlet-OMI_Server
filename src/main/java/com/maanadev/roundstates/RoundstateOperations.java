@@ -25,6 +25,7 @@ public interface RoundstateOperations {
 	public PLAYER getPlayerContext();
 	public void generateStatusMessages();
 	public void generateStatusmessage(String userId);
+	public PLAYER nextPlayerForNxtRound();
 	public PLAYER nextPlayer();
 	public Round nextRound();
 	public void incrementConnectedPlayerCount();

@@ -36,8 +36,7 @@ public class RoundMiddle implements RoundstateOperations {
 	}
 
 	public Response handlePostRequest(HttpServletRequest req, RoundstateOperations context) {
-		// TODO Auto-generated method stub
-			return null;
+			return playerContext.handleSSERequest(req,null);
 	}
 
 	public void assignFirstHand(CARD[] cards, int position) {
@@ -102,7 +101,7 @@ public class RoundMiddle implements RoundstateOperations {
 
 	}
 
-	public PLAYER nextPlayer() {
+	public PLAYER nextPlayerForNxtRound() {
 		int playerNum;
 		synchronized (playerNumToUserId) {
 			 playerNum = (Integer) playerNumToUserId.getKey(playerContext.getUserId());
@@ -139,7 +138,18 @@ public class RoundMiddle implements RoundstateOperations {
 	public void setUpRound(Round roundContext) {
 		roundContext.setPlayers(players);
 		roundContext.setPlayerNumToUserId(playerNumToUserId);
-		roundContext.setPlayerContext(nextPlayer());
+		roundContext.setPlayerContext(nextPlayerForNxtRound());
+	}
+
+	public PLAYER nextPlayer() {
+		int playerNum;
+		synchronized (playerNumToUserId) {
+			 playerNum = (Integer) playerNumToUserId.getKey(playerContext.getUserId());
+			 playerNum = (playerNum+1 )%4;
+				
+			 return getPlayer((String)playerNumToUserId.get(playerNum));
+		}
+		
 	}
 
 }
