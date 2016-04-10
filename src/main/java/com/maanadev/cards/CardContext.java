@@ -2,7 +2,7 @@ package com.maanadev.cards;
 
 public interface CardContext {
 	public static final String CARDS_ = "cards/";
-
+	public static final String EXTENSION=".png";
 	public static final String DIAMONDNAME = "0_";
 	public static final String HEARTSNAME = "2_";
 	public static final String SPADESNAME = "3_";

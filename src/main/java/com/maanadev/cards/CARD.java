@@ -4,7 +4,7 @@ public enum CARD implements CardContext {
 
 	DIAMOND_A {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_A);
+			return CARDS_ + (DIAMONDVALUE + CARD_A+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -17,7 +17,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_2 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_2);
+			return CARDS_ + (DIAMONDVALUE + CARD_2+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -30,7 +30,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_3 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_3);
+			return CARDS_ + (DIAMONDVALUE + CARD_3+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -43,7 +43,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_4 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_4);
+			return CARDS_ + (DIAMONDVALUE + CARD_4+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -56,7 +56,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_5 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_5);
+			return CARDS_ + (DIAMONDVALUE + CARD_5+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -69,7 +69,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_6 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_6);
+			return CARDS_ + (DIAMONDVALUE + CARD_6+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -82,7 +82,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_7 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_7);
+			return CARDS_ + (DIAMONDVALUE + CARD_7+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -95,7 +95,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_8 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_8);
+			return CARDS_ + (DIAMONDVALUE + CARD_8+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -108,7 +108,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_9 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_9);
+			return CARDS_ + (DIAMONDVALUE + CARD_9+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -121,7 +121,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_10 {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_10);
+			return CARDS_ + (DIAMONDVALUE + CARD_10+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -134,7 +134,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_J {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_J);
+			return CARDS_ + (DIAMONDVALUE + CARD_J+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -147,7 +147,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_Q {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_Q);
+			return CARDS_ + (DIAMONDVALUE + CARD_Q+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -160,7 +160,7 @@ public enum CARD implements CardContext {
 	},
 	DIAMOND_K {
 		public String getName() {
-			return CARDS_ + (DIAMONDVALUE + CARD_K);
+			return CARDS_ + (DIAMONDVALUE + CARD_K+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -173,7 +173,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_A {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_A);
+			return CARDS_ + (HEARTSVALUE + CARD_A+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -186,7 +186,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_2 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_2);
+			return CARDS_ + (HEARTSVALUE + CARD_2+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -199,7 +199,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_3 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_3);
+			return CARDS_ + (HEARTSVALUE + CARD_3+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -212,7 +212,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_4 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_4);
+			return CARDS_ + (HEARTSVALUE + CARD_4+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -225,7 +225,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_5 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_5);
+			return CARDS_ + (HEARTSVALUE + CARD_5+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -238,7 +238,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_6 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_6);
+			return CARDS_ + (HEARTSVALUE + CARD_6+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -251,7 +251,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_7 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_7);
+			return CARDS_ + (HEARTSVALUE + CARD_7+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -264,7 +264,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_8 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_8);
+			return CARDS_ + (HEARTSVALUE + CARD_8+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -277,7 +277,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_9 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_9);
+			return CARDS_ + (HEARTSVALUE + CARD_9+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -290,7 +290,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_10 {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_10);
+			return CARDS_ + (HEARTSVALUE + CARD_10+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -303,7 +303,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_J {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_J);
+			return CARDS_ + (HEARTSVALUE + CARD_J+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -316,7 +316,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_Q {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_Q);
+			return CARDS_ + (HEARTSVALUE + CARD_Q+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -329,7 +329,7 @@ public enum CARD implements CardContext {
 	},
 	HEARTS_K {
 		public String getName() {
-			return CARDS_ + (HEARTSVALUE + CARD_K);
+			return CARDS_ + (HEARTSVALUE + CARD_K+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -342,7 +342,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_A {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_A);
+			return CARDS_ + (SPADESVALUE + CARD_A+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -355,7 +355,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_2 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_2);
+			return CARDS_ + (SPADESVALUE + CARD_2+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -368,7 +368,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_3 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_3);
+			return CARDS_ + (SPADESVALUE + CARD_3+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -381,7 +381,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_4 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_4);
+			return CARDS_ + (SPADESVALUE + CARD_4+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -394,7 +394,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_5 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_5);
+			return CARDS_ + (SPADESVALUE + CARD_5+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -407,7 +407,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_6 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_6);
+			return CARDS_ + (SPADESVALUE + CARD_6+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -420,7 +420,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_7 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_7);
+			return CARDS_ + (SPADESVALUE + CARD_7+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -433,7 +433,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_8 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_8);
+			return CARDS_ + (SPADESVALUE + CARD_8+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -446,7 +446,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_9 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_9);
+			return CARDS_ + (SPADESVALUE + CARD_9+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -459,7 +459,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_10 {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_10);
+			return CARDS_ + (SPADESVALUE + CARD_10+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -472,7 +472,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_J {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_J);
+			return CARDS_ + (SPADESVALUE + CARD_J+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -485,7 +485,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_Q {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_Q);
+			return CARDS_ + (SPADESVALUE + CARD_Q+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -498,7 +498,7 @@ public enum CARD implements CardContext {
 	},
 	SPADES_K {
 		public String getName() {
-			return CARDS_ + (SPADESVALUE + CARD_K);
+			return CARDS_ + (SPADESVALUE + CARD_K+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -511,7 +511,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_A {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_A);
+			return CARDS_ + (CLUBSVALUE + CARD_A+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -524,7 +524,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_2 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_2);
+			return CARDS_ + (CLUBSVALUE + CARD_2+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -537,7 +537,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_3 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_3);
+			return CARDS_ + (CLUBSVALUE + CARD_3+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -550,7 +550,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_4 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_4);
+			return CARDS_ + (CLUBSVALUE + CARD_4+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -563,7 +563,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_5 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_5);
+			return CARDS_ + (CLUBSVALUE + CARD_5+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -576,7 +576,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_6 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_6);
+			return CARDS_ + (CLUBSVALUE + CARD_6+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -589,7 +589,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_7 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_7);
+			return CARDS_ + (CLUBSVALUE + CARD_7+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -602,7 +602,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_8 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_8);
+			return CARDS_ + (CLUBSVALUE + CARD_8+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -615,7 +615,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_9 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_9);
+			return CARDS_ + (CLUBSVALUE + CARD_9+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -628,7 +628,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_10 {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_10);
+			return CARDS_ + (CLUBSVALUE + CARD_10+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -641,7 +641,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_J {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_J);
+			return CARDS_ + (CLUBSVALUE + CARD_J+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -654,7 +654,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_Q {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_Q);
+			return CARDS_ + (CLUBSVALUE + CARD_Q+EXTENSION);
 		}
 
 		public int getcardVaule() {
@@ -667,7 +667,7 @@ public enum CARD implements CardContext {
 	},
 	CLUBS_K {
 		public String getName() {
-			return CARDS_ + (CLUBSVALUE + CARD_K);
+			return CARDS_ + (CLUBSVALUE + CARD_K+EXTENSION);
 		}
 
 		public int getcardVaule() {

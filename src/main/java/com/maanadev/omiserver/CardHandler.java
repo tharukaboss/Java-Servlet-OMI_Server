@@ -19,12 +19,15 @@ public class CardHandler {
 
 		EnumSet<CARD> enumset = EnumSet.allOf(CARD.class);
 		ArrayList<CARD> list = new ArrayList<CARD>(enumset);
-		int key = 1;
+		
 		for (CARD card : list) {
+			int key = card.getcardVaule()+card.getSuit().getcardVaule();
 			cards.put(key, card);
-			key++;
+		
 
 		}
+		createArray();
+		shuffleArray();
 	}
 
 	public CARD getCard(int value) {
@@ -58,14 +61,7 @@ public class CardHandler {
 		}
 		return array;
 	}
-	public static void main(String[] args) {
+	
 		
-		CardHandler handler =new CardHandler();
-		handler.init();
-		
-		for (CARD card : handler.getCardsHands()) {
-			System.out.println(card.getSuit().getName()+" "+card.getcardVaule());
-		}
-		
-	}
+	
 }

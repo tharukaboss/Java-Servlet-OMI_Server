@@ -28,5 +28,17 @@
   </dependencies>
   <build>
     <finalName>omiserver</finalName>
+    <plugins>
+    	 <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <webappDirectory>/home/maanadev/Software/apache-tomcat-8.0.33/webapps/omiserver</webappDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
+  
+  
 </project>
