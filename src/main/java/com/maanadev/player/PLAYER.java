@@ -3,6 +3,7 @@ package com.maanadev.player;
 import javax.servlet.http.HttpServletRequest;
 
 import com.maanadev.cards.CARD;
+import com.maanadev.cards.SUIT;
 import com.maanadev.messages.Message;
 import com.maanadev.messages.Response;
 
@@ -87,7 +88,6 @@ public enum PLAYER implements PlayerOperations{
 
 	public Response handleSSERequest(HttpServletRequest req, PLAYER playerContex) {
 		// TODO Auto-generated method stub
-		System.out.println("inside player");
 		return operations.handleSSERequest(req, playerContex);
 	}
 
@@ -99,6 +99,16 @@ public enum PLAYER implements PlayerOperations{
 	public void setShowCards(boolean showCards) {
 		// TODO Auto-generated method stub
 		operations.setShowCards(showCards);
+	}
+
+	public CARD getCard(int cardNum) {
+		// TODO Auto-generated method stub
+		return operations.getCard(cardNum);
+	}
+
+	public boolean isCardThere(SUIT suit) {
+		// TODO Auto-generated method stub
+		return operations.isCardThere(suit);
 	}
 	
 	

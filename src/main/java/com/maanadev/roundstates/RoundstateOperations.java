@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.collections.bidimap.DualHashBidiMap;
 
 import com.maanadev.cards.CARD;
+import com.maanadev.messages.PlayerCardChangeReq;
 import com.maanadev.messages.Response;
 import com.maanadev.player.PLAYER;
 
@@ -14,7 +15,7 @@ public interface RoundstateOperations {
 
 	
 	public Response handleSSERequest(HttpServletRequest req,RoundstateOperations context);
-	public Response handlePostRequest(HttpServletRequest req,RoundstateOperations context);
+	public Response handlePostRequest(PlayerCardChangeReq req);
 	public void assignFirstHand(CARD cards[],int position);
 	public void setTrumph(CARD trumph);
 	public CARD getTrumph();
@@ -33,4 +34,6 @@ public interface RoundstateOperations {
 	public void setmessage(String userId);
 	public int getConnectedPlayerCount();
 	public void setUpRound(Round roundContext);
+	public CARD getCardFromReq(PlayerCardChangeReq req);
+	public int getPlayerIdNum(String userid);
 }

@@ -62,6 +62,9 @@ public class CardHandler {
 		return array;
 	}
 	
-		
+		public CARD getTrumph(){
+			
+			return getCard(cardsArray[51]);
+		}
 	
 }

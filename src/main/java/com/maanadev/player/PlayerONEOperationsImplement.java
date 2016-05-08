@@ -2,10 +2,12 @@ package com.maanadev.player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.maanadev.cards.CARD;
+import com.maanadev.cards.SUIT;
 import com.maanadev.messages.ImageBind;
 import com.maanadev.messages.Message;
 import com.maanadev.messages.Response;
@@ -92,7 +94,6 @@ public class PlayerONEOperationsImplement extends PlayerSuper implements PlayerO
 
 		if (card1 != null) {
 			m.setCard1(card1.getName());
-			System.out.println(card1.getName() + "jkhhjkhjkh");
 		}
 
 		if (card2 != null)
@@ -123,6 +124,24 @@ public class PlayerONEOperationsImplement extends PlayerSuper implements PlayerO
 
 	public void setShowCards(boolean showCards) {
 		this.showCards = showCards;
+	}
+
+	public CARD getCard(int cardNum) {
+		synchronized (hand) {
+			return hand.get(cardNum);
+		}
+	}
+
+	public boolean isCardThere(SUIT suit) {
+		synchronized (hand) {
+				for(CARD card :hand.values()){
+					if(card.getSuit()==suit){
+						return true;
+					}
+				} 
+		}
+		return false;
+		
 	}
 
 }

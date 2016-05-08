@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.collections.bidimap.DualHashBidiMap;
 
 import com.maanadev.cards.CARD;
+import com.maanadev.messages.PlayerCardChangeReq;
 import com.maanadev.messages.Response;
 import com.maanadev.player.PLAYER;
 
@@ -23,7 +24,6 @@ public class RoundInitial implements RoundstateOperations {
 	public Response handleSSERequest(HttpServletRequest req, RoundstateOperations context) {
 
 		if (req.getHeader("Last-Event-ID") == null) {
-			System.out.println("don't have ID");
 			switch (conntctedPlayerCount) {
 			case 0: {
 				System.out.println("creating player 1");
@@ -33,6 +33,7 @@ public class RoundInitial implements RoundstateOperations {
 				// setuserId
 				String userId = id + "";
 				nxtPlayerContext = userId;
+				System.out.println("initi "+userId);
 				playerNumToUserId.put(0, userId);
 				id++;
 				/// look here
@@ -43,7 +44,6 @@ public class RoundInitial implements RoundstateOperations {
 
 				Response res = new Response();
 				res.setUserId(userId);
-				System.out.println("round :" + userId);
 				res.setMessage(player.generateStatusMessage(true));
 				return res;
 			}
@@ -105,10 +105,8 @@ public class RoundInitial implements RoundstateOperations {
 			}
 
 		} else {
-			System.out.println("have ID");
 			/// already registered
 			String userId = req.getHeader("Last-Event-ID");
-			System.out.println(userId);
 			/// hash map save userId
 			return getPlayer(userId).handleSSERequest(req, null);
 
@@ -200,6 +198,23 @@ public class RoundInitial implements RoundstateOperations {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public CARD getCardFromReq(PlayerCardChangeReq req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getPlayerIdNum(String userid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Response handlePostRequest(PlayerCardChangeReq req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	
 

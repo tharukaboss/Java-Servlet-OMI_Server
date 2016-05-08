@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.collections.bidimap.DualHashBidiMap;
 
 import com.maanadev.cards.CARD;
+import com.maanadev.cards.SUIT;
+import com.maanadev.messages.PlayerCardChangeReq;
 import com.maanadev.messages.Response;
 import com.maanadev.omiserver.CardHandler;
 import com.maanadev.player.PLAYER;
@@ -19,13 +21,15 @@ public class RoundMiddle implements RoundstateOperations {
 	private HashMap<String, PLAYER> players;
 	private DualHashBidiMap playerNumToUserId;
 	private static final String PLAYMESSAGE = "play!!!";
-
+	private SUIT suit;
+	private HashMap<String, CARD> winnerTrack = new HashMap<String, CARD>();
+	private int connectedPlayerCount = 0;
+	
 	public Response handleSSERequest(HttpServletRequest req, RoundstateOperations context) {
-		System.out.println("round changeed ok");
 		if (!roundstarted) {
 			CardHandler cardHandler = new CardHandler();
 			cardHandler.init();
-
+			setTrumph(cardHandler.getTrumph());
 			assignFirstHand(cardHandler.getCardsHands(), 0);
 			setmessage(playerContext.getUserId());
 			roundstarted=true;
@@ -35,9 +39,6 @@ public class RoundMiddle implements RoundstateOperations {
 
 	}
 
-	public Response handlePostRequest(HttpServletRequest req, RoundstateOperations context) {
-			return playerContext.handleSSERequest(req,null);
-	}
 
 	public void assignFirstHand(CARD[] cards, int position) {
 		int pos = 0;
@@ -117,9 +118,10 @@ public class RoundMiddle implements RoundstateOperations {
 		return null;
 	}
 
-	public void incrementConnectedPlayerCount() {
-		// TODO Auto-generated method stub
-
+	public   void incrementConnectedPlayerCount() {
+			
+		connectedPlayerCount++;
+			
 	}
 
 	public void setPlayerNumToUserId(DualHashBidiMap playerNumToUserId) {
@@ -132,7 +134,7 @@ public class RoundMiddle implements RoundstateOperations {
 
 	public int getConnectedPlayerCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return connectedPlayerCount;
 	}
 
 	public void setUpRound(Round roundContext) {
@@ -152,4 +154,145 @@ public class RoundMiddle implements RoundstateOperations {
 		
 	}
 
+	public int getPlayerIdNum(String userid) {
+		int playerNum;
+
+		synchronized (playerNumToUserId) {
+			playerNum = (Integer) playerNumToUserId.getKey(userid);
+		}
+
+		return playerNum;
+	}
+
+	public CARD getCardFromReq(PlayerCardChangeReq req) {
+		int cardNum = Integer.parseInt(req.getCard().split("/")[1].split("\\.")[0]);
+		return playerContext.getCard(cardNum);
+	}
+
+	private void addCurrentCard(String userId,CARD card){
+		winnerTrack.put(userId, card);
+	}
+	public Response handlePostRequest(PlayerCardChangeReq req) {
+		
+		boolean handisvalid =false;
+		System.out.println("post "+req.getUserId()); 
+		if (req.getUserId().equals(playerContext.getUserId())) {//check whether correct player is playing
+		
+			CARD card = getCardFromReq(req);
+			
+			if (getConnectedPlayerCount() == 0) {//is trick starting
+					System.out.println("initial");
+				suit = card.getSuit();
+				addCurrentCard(req.getUserId(), card);
+				updateHand(req.getUserId(),card);
+				incrementConnectedPlayerCount();// store how many players played
+				playerContext = nextPlayer();	
+				handisvalid =true;
+			} else{
+				
+				if(card.getSuit()==suit){
+					System.out.println("card suit");
+					addCurrentCard(req.getUserId(), card);
+					updateHand(req.getUserId(),card);
+					incrementConnectedPlayerCount();// store how many players played
+					playerContext = nextPlayer();	
+					handisvalid=true;
+				}else{
+					
+					if(playerContext.isCardThere(suit)){
+						System.out.println("card is in");
+					}else{
+						System.out.println("card is not");
+						addCurrentCard(req.getUserId(), card);
+						updateHand(req.getUserId(),card);
+						incrementConnectedPlayerCount();// store how many players played
+						playerContext = nextPlayer();
+						handisvalid =true;
+					}
+				}
+			}
+			
+			if(handisvalid && (getConnectedPlayerCount()==4)){
+				String winner=null;
+				CARD tmpcardPre=null ;
+				for(String user:winnerTrack.keySet()){
+					CARD tmpcard = winnerTrack.get(user);
+					
+					
+					if(tmpcard.getSuit()==suit){
+						if(winner==null){
+							 tmpcardPre = winnerTrack.get(user);
+							winner =user;
+						}else{
+							if(tmpcard.getcardVaule()>tmpcardPre.getcardVaule()){
+								winner=user;
+								tmpcardPre=tmpcard;
+							}
+						}
+					}else{
+						if(tmpcard.getSuit()==trumph.getSuit() ){
+							if(tmpcardPre.getSuit()==trumph.getSuit()){
+								if(tmpcard.getcardVaule()>tmpcardPre.getcardVaule()){
+									winner=user;
+									tmpcardPre=tmpcard;
+								}
+							}else{
+								winner=user;
+								tmpcardPre=tmpcard;
+							}
+						}
+					}
+				}
+				PLAYER winnerPlayer =getPlayer(winner);
+				winnerPlayer.incrementPoint();
+				winnerPlayer.setMessage("You win");
+				
+			}
+			
+			
+		
+		return null;
+	} else {
+		return null;
+	}
+	}
+
+
+	public void updateHand(String userId, CARD card) {
+		int playerNum = getPlayerIdNum(userId);
+
+		// set mycard
+		playerContext.setMyCard(card);
+		playerContext.removeCard(card.getcardVaule());
+		//updating the card for each player
+		for (int i = 0; i < 3; i++) {
+
+			playerNum++;
+			playerNum %= 4;
+			System.out.println(playerNum); 
+			PLAYER player;
+			synchronized (playerNumToUserId) {
+				player = getPlayer((String) playerNumToUserId.get(playerNum));
+			}
+			
+			switch (i) {
+			case 0:
+				
+				player.setCard1(card);
+				break;
+
+				
+			case 1: 
+				player.setCard2(card);
+				break;
+				
+			case 2: 
+				player.setCard3(card);
+				break;
+			default:
+				break;
+			}
+		}
+		
+	}
 }

@@ -23,7 +23,7 @@ div.position {
 	<script>
 		
 			
-			
+	var id;
 
 		/*   
 		 ----  JSON Structure to update the UI  ----
@@ -63,9 +63,20 @@ div.position {
 		 *******************************************************/
 
 		function PlayCard(card) {
+			xhr = new XMLHttpRequest();
+			var url = "Gateway";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-type", "application/json");
+			xhr.onreadystatechange = function () { 
+			    if (xhr.readyState == 4 && xhr.status == 200) {
+			      //  var json = JSON.parse(xhr.responseText);
+			        console.log(xhr.responseText);
+			    }
+			}
+			var data = JSON.stringify({"userId":id,"card":card});
+			xhr.send(data);
 			alert(card
 					+ " is played by the user.\nEdit this function and communicate with server instead of message box");
-			Update(resp);
 		}
 		/******************************************************/
 	</script>
@@ -138,7 +149,8 @@ div.position {
 		ko.applyBindings(viewModel);
 
 		function Update(statusJSON) {
-			var parsed = JSON.parse(statusJSON);
+			//var parsed = JSON.parse(statusJSON);
+			var parsed = statusJSON;
 			viewModel.cards(parsed.cards);
 			viewModel.card1(parsed.card1);
 			viewModel.card2(parsed.card2);
@@ -152,8 +164,11 @@ div.position {
 			 var eventSource = new EventSource("Gateway");
 			         
 			        eventSource.onmessage = function(event) {
-			        	serverRsoponse= event.data ;
-			         console.log(event.data );
+			        	 
+			        var test=	 JSON.parse(event.data );
+			       	id = test.id;
+			        	serverRsoponse= test.m;
+			       
 			        
 			         Update(serverRsoponse );
 			         

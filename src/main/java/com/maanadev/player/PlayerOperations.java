@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import com.maanadev.cards.CARD;
+import com.maanadev.cards.SUIT;
 import com.maanadev.messages.Message;
 import com.maanadev.messages.Response;
 
@@ -39,5 +40,6 @@ public interface PlayerOperations {
 	public Message generateStatusMessage(boolean intitial);
 	
 	public void setShowCards(boolean showCards);
-	
+	public CARD getCard(int cardNum);
+	public boolean isCardThere(SUIT suit);
 }
